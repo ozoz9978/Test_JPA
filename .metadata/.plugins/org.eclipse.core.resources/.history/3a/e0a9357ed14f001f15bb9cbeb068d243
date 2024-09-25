@@ -1,0 +1,20 @@
+package com.kdigital.jpa05;
+
+public class EmbeddedMain {
+
+	public static void main(String[] args) {
+		
+		insertHotel();
+		printHotel();
+		
+	}
+	
+	private static void insertHotel() {
+		
+	}
+	
+	private static void printHotel() {
+		
+	}
+
+}

@@ -1,0 +1,38 @@
+package com.kdigital.jpa06;
+
+import com.kdigital.jpa06.util.MyEntityManager;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+
+public class SurveyMain {
+
+	public static void main(String[] args) {
+		makeQuestion();
+		makeSurvey();
+
+	}
+	private static void makeQuestion() {
+		EntityManager manager = MyEntityManager.getManager();
+		EntityTransaction tx = manager.getTransaction();
+		try {
+			tx.begin();
+			Question q1 = new Question("Q1","질문 - 1");
+			
+			tx.commit();
+			System.out.println("저장완료!");
+			
+		}catch(Exception e) {
+			
+			tx.rollback();
+			e.printStackTrace();
+			
+		}finally {
+			manager.close();
+		}
+	}
+	private static void makeSurvey() {
+		
+	}
+
+}

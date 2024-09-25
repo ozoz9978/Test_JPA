@@ -1,0 +1,5 @@
+package com.kdigital.jpa02.entity;
+
+public class Member {
+
+}

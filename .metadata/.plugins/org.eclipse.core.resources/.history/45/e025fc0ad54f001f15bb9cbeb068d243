@@ -1,0 +1,48 @@
+package com.kdigital.jpa05;
+
+import java.time.LocalDate;
+
+import com.kdigital.jpa05.entity.Address;
+import com.kdigital.jpa05.entity.Grade;
+import com.kdigital.jpa05.entity.Hotel;
+import com.kdigital.jpa05.util.MyEntityManager;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+
+public class EmbeddedMain {
+
+	public static void main(String[] args) {
+		
+		insertHotel();
+		printHotel();
+		
+	}
+	// 호텔정보추가
+	private static void insertHotel() {
+		EntityManager manager = MyEntityManager.getManager();
+		EntityTransaction tx = manager.getTransaction();
+		try {
+			tx.begin();
+			Address address = new Address("부산시 사하구","몰라동 123번지","000-4568");
+			Hotel hotel = new Hotel("h_01", "서울 호텔", LocalDate.now(), Grade.S2, address);
+			manager.persist(hotel);
+			
+			tx.commit();
+			System.out.println("저장완료!");
+			
+		}catch(Exception e) {
+			
+			tx.rollback();
+			e.printStackTrace();
+			
+		}finally {
+			manager.close();
+		}
+	}
+	
+	private static void printHotel() {
+		
+	}
+
+}

@@ -1,0 +1,27 @@
+package com.kdigital.jpa02.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+
+
+@AllArgsConstructor
+
+
+@Entity
+@Table(name="members")
+public class Member {
+	@Id
+	private String email;
+	private String name;
+	private LocalDate birthday;
+	private int age;
+	
+	
+	
+	
+
+}

@@ -1,0 +1,39 @@
+package com.kdigital.jpa05;
+
+import com.kdigital.jpa05.util.MyEntityManager;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+
+public class EmbeddedMain {
+
+	public static void main(String[] args) {
+		
+		insertHotel();
+		printHotel();
+		
+	}
+	// 호텔정보추가
+	private static void insertHotel() {
+		EntityManager manager = MyEntityManager.getManager();
+		EntityTransaction tx = manager.getTransaction();
+		try {
+			tx.begin();
+			
+			tx.commit();
+			
+		}catch(Exception e) {
+			
+			tx.rollback();
+			e.printStackTrace();
+			
+		}finally {
+			manager.close();
+		}
+	}
+	
+	private static void printHotel() {
+		
+	}
+
+}

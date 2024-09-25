@@ -1,0 +1,10 @@
+-- 사용자 계정 생성 (jpauser)
+DROP USER 'jpauser'@'localhost';
+CREATE USER 'jpauser'@'localhost' identified BY 'jpauser';
+
+DROP USER 'jpauser'@'%';
+CREATE USER 'jpauser'@'%' identified BY 'jpauser';
+
+-- 권한 부여
+GRANT ALL PRIVILEGES ON jpatest.* TO 'jpauser'@'localhost';
+GRANT ALL PRIVILEGES ON jpatest.* TO 'jpauser'@'%';

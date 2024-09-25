@@ -1,0 +1,39 @@
+package com.kdigital.jpa02;
+
+import java.time.LocalDate;
+
+import com.kdigital.jpa02.entity.Member;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+
+public class MemberInsert {
+
+	public static void main(String[] args) {
+		// 1 factory 생성
+		EntityManagerFactory factory 
+			= Persistence.createEntityManagerFactory("jpastudy");
+		// 2 manager 생성
+		EntityManager manager = factory.createEntityManager();
+		// 3 Transaction 생성
+		EntityTransaction tx = manager.getTransaction();
+		
+		
+		try {
+			tx.begin();
+			Member member = new Member ("01@naver.com", "김일",LocalDate.now(),25);
+			manager.persist(member);
+			tx.commit();
+			System.out.println("저장완료!");
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("저장실패!");
+		} finally {
+			manager.close();
+		}
+		factory.close();
+	}
+
+}

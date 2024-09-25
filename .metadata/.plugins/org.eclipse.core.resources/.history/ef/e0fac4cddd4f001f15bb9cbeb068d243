@@ -1,0 +1,17 @@
+package com.kdigital.jpa06;
+
+public class SurveyMain {
+
+	public static void main(String[] args) {
+		makeQuestion();
+		makeSurvey();
+
+	}
+	private static void makeQuestion() {
+		
+	}
+	private static void makeSurvey() {
+		
+	}
+
+}

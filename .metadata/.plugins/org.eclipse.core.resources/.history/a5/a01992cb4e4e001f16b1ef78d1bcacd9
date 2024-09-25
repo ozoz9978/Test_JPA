@@ -1,0 +1,37 @@
+package com.kdigital.jpa03;
+
+import com.kdigital.jpa03.entity.Fitness;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+
+public class FitnessTest {
+
+	public static void main(String[] args) {
+		// 1 factory 생성
+		EntityManagerFactory factory 
+			= Persistence.createEntityManagerFactory("jpastudy");
+		// 2 manager 생성
+		EntityManager manager = factory.createEntityManager();
+		// 3 Transaction 생성
+		EntityTransaction tx = manager.getTransaction();
+		
+		
+		try {
+			tx.begin();
+			Fitness fitness = new Fitness("이몽룡","남자",175.65,75);
+		
+			tx.commit();
+			System.out.println("저장완료!");
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println("저장실패!");
+		} finally {
+			manager.close();
+		}
+		factory.close();
+	}
+
+}
